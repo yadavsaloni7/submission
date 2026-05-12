@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MindBridge Health — Thoughtful care begins here.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#0B6E6E;--teal-mid:#1A8A8A;--teal-light:#EAF5F5;--teal-pale:#F2FAFA;
+  --sage:#E5EFEC;--sage-dark:#B8D0C8;
+  --ink:#141F1F;--ink-mid:#3D5252;--ink-light:#7A9898;
+  --bg:#F6FAFA;--white:#FFFFFF;--border:#D4E8E8;
+  --red:#C0392B;--red-light:#FDF2F1;
+  --amber:#B7700A;--amber-light:#FEF9EE;
+  --green:#1A6B4A;--green-light:#EBF7F2;
+  --r:14px;--r-sm:8px;
+  --shadow:0 2px 16px rgba(11,110,110,0.07);
+  --shadow-lg:0 8px 40px rgba(11,110,110,0.13);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{font-family:'DM Sans',sans-serif;font-size:16px;color:var(--ink);background:var(--bg);}
+body{min-height:100vh;}
+
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:200;
+  background:rgba(255,255,255,0.93);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  padding:0 2rem;height:62px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.brand{font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:var(--teal);cursor:pointer;display:flex;align-items:center;gap:8px;}
+.brand-mark{width:28px;height:28px;background:var(--teal);border-radius:50% 50% 50% 0;display:flex;align-items:center;justify-content:center;}
+.brand-mark svg{width:14px;height:14px;fill:white;}
+.nav-right{display:flex;gap:8px;align-items:center;}
+.nbtn{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:7px 16px;border-radius:99px;cursor:pointer;transition:all .16s;border:1.5px solid var(--border);background:transparent;color:var(--ink-mid);}
+.nbtn:hover{border-color:var(--teal);color:var(--teal);background:var(--teal-light);}
+.nbtn.solid{background:var(--teal);color:white;border-color:var(--teal);}
+.nbtn.solid:hover{background:var(--teal-mid);}
+
+/* PAGES */
+.page{display:none;min-height:calc(100vh - 62px);}
+.page.active{display:block;}
+
+/* ROLE */
+.role-page{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 62px);padding:2rem;}
+.role-hero{text-align:center;max-width:560px;margin-bottom:52px;}
+.role-hero h1{font-family:'Fraunces',serif;font-size:clamp(36px,6vw,56px);font-weight:300;line-height:1.15;margin-bottom:14px;}
+.role-hero h1 em{color:var(--teal);font-style:italic;}
+.role-hero p{font-size:17px;color:var(--ink-mid);line-height:1.7;}
+.role-cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;width:100%;max-width:640px;}
+.role-card{background:var(--white);border:2px solid var(--border);border-radius:var(--r);padding:36px 28px;text-align:center;cursor:pointer;transition:all .2s;}
+.role-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px);}
+.role-card.patient:hover{border-color:var(--teal);}
+.role-card.psych:hover{border-color:var(--green);}
+.role-icon{width:56px;height:56px;border-radius:var(--r);margin:0 auto 18px;display:flex;align-items:center;justify-content:center;font-size:26px;}
+.role-card.patient .role-icon{background:var(--teal-light);}
+.role-card.psych .role-icon{background:var(--green-light);}
+.role-card h2{font-family:'Fraunces',serif;font-size:22px;font-weight:400;margin-bottom:8px;}
+.role-card p{font-size:14px;color:var(--ink-mid);line-height:1.6;}
+.role-card .arrow{margin-top:20px;display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--teal);}
+.role-card.psych .arrow{color:var(--green);}
+
+/* HOME */
+.hero{background:linear-gradient(150deg,var(--white) 0%,var(--teal-light) 100%);padding:80px 2rem 64px;text-align:center;}
+.pill{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);background:var(--teal-light);border:1px solid var(--sage-dark);padding:5px 14px;border-radius:99px;margin-bottom:24px;}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(36px,5.5vw,58px);font-weight:300;line-height:1.15;max-width:680px;margin:0 auto 18px;}
+.hero h1 em{color:var(--teal);font-style:italic;}
+.hero p{font-size:17px;color:var(--ink-mid);max-width:520px;margin:0 auto 36px;line-height:1.7;}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn{font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;padding:13px 28px;border-radius:var(--r);cursor:pointer;transition:all .18s;border:none;display:inline-flex;align-items:center;gap:8px;}
+.btn-primary{background:var(--teal);color:white;}
+.btn-primary:hover{background:var(--teal-mid);transform:translateY(-1px);box-shadow:var(--shadow);}
+.btn-outline{background:white;color:var(--teal);border:1.5px solid var(--teal);}
+.btn-outline:hover{background:var(--teal-light);}
+.steps-wrap{max-width:960px;margin:0 auto;padding:64px 2rem;}
+.sec-label{text-align:center;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);margin-bottom:10px;}
+.sec-title{text-align:center;font-family:'Fraunces',serif;font-size:30px;font-weight:400;margin-bottom:44px;}
+.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:18px;}
+.step-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:24px 20px;}
+.step-num{width:32px;height:32px;background:var(--teal-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--teal);margin-bottom:14px;}
+.step-card h3{font-size:15px;font-weight:600;margin-bottom:6px;}
+.step-card p{font-size:13px;color:var(--ink-mid);line-height:1.6;}
+.notice{background:var(--teal-light);border:1px solid var(--sage-dark);border-radius:var(--r);padding:18px 22px;margin-top:32px;font-size:14px;color:var(--ink-mid);line-height:1.6;text-align:center;}
+.notice strong{color:var(--teal);}
+
+/* FORMS */
+.form-wrap{max-width:580px;margin:0 auto;padding:48px 2rem;}
+.form-wrap h2{font-family:'Fraunces',serif;font-size:28px;font-weight:400;margin-bottom:6px;}
+.form-wrap .sub{font-size:14px;color:var(--ink-mid);margin-bottom:28px;line-height:1.6;}
+.card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:32px;box-shadow:var(--shadow);}
+.field{margin-bottom:20px;}
+.field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px;}
+.field input,.field select,.field textarea{width:100%;padding:11px 13px;border:1.5px solid var(--border);border-radius:var(--r-sm);font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink);background:var(--white);outline:none;transition:border-color .14s;}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(11,110,110,.07);}
+.field textarea{resize:vertical;min-height:88px;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.fbtn{width:100%;padding:13px;background:var(--teal);color:white;border:none;border-radius:var(--r);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;cursor:pointer;transition:all .18s;margin-top:8px;}
+.fbtn:hover{background:var(--teal-mid);}
+.fbtn.green{background:var(--green);}
+.fbtn.green:hover{background:#145c3d;}
+
+/* ALERTS */
+.alert{padding:13px 16px;border-radius:var(--r-sm);font-size:14px;line-height:1.6;margin-bottom:16px;}
+.alert-ok{background:var(--green-light);color:var(--green);border:1px solid #9dcfb8;}
+.alert-warn{background:var(--amber-light);color:var(--amber);border:1px solid #e8c878;}
+.alert-err{background:var(--red-light);color:var(--red);border:1px solid #e8b0a8;}
+.alert-info{background:var(--teal-light);color:var(--teal);border:1px solid var(--sage-dark);}
+
+/* DASHBOARD */
+.dash-wrap{max-width:760px;margin:0 auto;padding:48px 2rem;}
+.dash-wrap h2{font-family:'Fraunces',serif;font-size:26px;font-weight:400;margin-bottom:4px;}
+.dash-sub{font-size:14px;color:var(--ink-mid);margin-bottom:28px;}
+.progress-bar{display:flex;background:var(--white);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:28px;}
+.prog-step{flex:1;padding:11px 6px;font-size:11px;font-weight:500;text-align:center;color:var(--ink-light);border-right:1px solid var(--border);transition:all .2s;}
+.prog-step:last-child{border-right:none;}
+.prog-step.done{background:var(--teal-light);color:var(--teal);}
+.prog-step.active{background:var(--teal);color:white;}
+.status-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:26px;box-shadow:var(--shadow);}
+.sc-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:18px;}
+.sc-info h3{font-size:16px;font-weight:600;margin-bottom:3px;}
+.sc-info p{font-size:13px;color:var(--ink-mid);}
+.badge{font-size:12px;font-weight:500;padding:5px 13px;border-radius:99px;}
+.badge-pending{background:var(--amber-light);color:var(--amber);}
+.badge-review{background:var(--teal-light);color:var(--teal);}
+.badge-confirmed{background:var(--green-light);color:var(--green);}
+.next-box{background:var(--sage);border-radius:var(--r-sm);padding:13px 16px;font-size:13px;color:var(--ink-mid);margin-bottom:18px;line-height:1.6;}
+.next-box strong{color:var(--ink);}
+.sc-actions{display:flex;gap:10px;flex-wrap:wrap;}
+.act-btn{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:9px 18px;border-radius:var(--r-sm);border:1.5px solid var(--border);background:var(--white);color:var(--ink);cursor:pointer;transition:all .15s;}
+.act-btn:hover{border-color:var(--teal);color:var(--teal);background:var(--teal-light);}
+.act-btn.primary{background:var(--teal);color:white;border-color:var(--teal);}
+.act-btn.primary:hover{background:var(--teal-mid);}
+.act-btn.green{background:var(--green);color:white;border-color:var(--green);}
+.act-btn.green:hover{background:#145c3d;}
+.act-btn:disabled{opacity:.4;cursor:not-allowed;}
+
+/* API KEY SETUP */
+.api-setup{max-width:560px;margin:0 auto;padding:48px 2rem;}
+.api-setup h2{font-family:'Fraunces',serif;font-size:26px;font-weight:400;margin-bottom:6px;}
+.api-setup .sub{font-size:14px;color:var(--ink-mid);margin-bottom:24px;line-height:1.6;}
+.api-steps{list-style:none;margin:0 0 24px;padding:0;display:flex;flex-direction:column;gap:10px;}
+.api-steps li{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--ink-mid);line-height:1.5;}
+.api-step-num{width:24px;height:24px;min-width:24px;background:var(--teal);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;margin-top:1px;}
+.api-steps a{color:var(--teal);text-decoration:none;font-weight:500;}
+.api-steps a:hover{text-decoration:underline;}
+
+/* INTAKE CHAT */
+.intake-wrap{max-width:780px;margin:0 auto;padding:36px 2rem 80px;}
+.intake-wrap h2{font-family:'Fraunces',serif;font-size:24px;font-weight:400;margin-bottom:6px;}
+.intake-wrap .sub{font-size:13px;color:var(--ink-mid);margin-bottom:18px;line-height:1.6;}
+.consent-box{background:var(--sage);border:1px solid var(--sage-dark);border-radius:var(--r);padding:14px 18px;font-size:13px;color:var(--ink-mid);line-height:1.7;margin-bottom:12px;}
+.safety-box{background:var(--red-light);border:1px solid #f0b0a8;border-radius:var(--r);padding:12px 16px;font-size:13px;color:var(--red);margin-bottom:18px;line-height:1.6;}
+.chat-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden;}
+.chat-header{background:var(--teal);padding:14px 20px;display:flex;align-items:center;gap:10px;}
+.chat-header-dot{width:9px;height:9px;background:rgba(255,255,255,.4);border-radius:50%;}
+.chat-header h3{font-size:14px;font-weight:500;color:white;}
+.chat-header p{font-size:12px;color:rgba(255,255,255,.7);margin-top:1px;}
+.chat-window{height:460px;overflow-y:auto;padding:22px;display:flex;flex-direction:column;gap:14px;scroll-behavior:smooth;}
+.msg{display:flex;gap:9px;max-width:88%;}
+.msg.ai{align-self:flex-start;}
+.msg.user{align-self:flex-end;flex-direction:row-reverse;}
+.msg-av{width:30px;height:30px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;}
+.msg.ai .msg-av{background:var(--teal-light);color:var(--teal);}
+.msg.user .msg-av{background:var(--sage-dark);color:var(--ink-mid);}
+.msg-bub{padding:11px 15px;border-radius:12px;font-size:14px;line-height:1.65;}
+.msg.ai .msg-bub{background:var(--sage);color:var(--ink);border-bottom-left-radius:3px;}
+.msg.user .msg-bub{background:var(--teal);color:white;border-bottom-right-radius:3px;}
+.typing-bub{padding:14px 16px;}
+.dots{display:flex;gap:5px;align-items:center;}
+.dots span{width:7px;height:7px;background:var(--ink-light);border-radius:50%;animation:bounce 1.2s infinite;}
+.dots span:nth-child(2){animation-delay:.2s;}
+.dots span:nth-child(3){animation-delay:.4s;}
+@keyframes bounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-6px)}}
+.chat-footer{padding:14px 16px;border-top:1px solid var(--border);display:flex;gap:10px;background:var(--white);}
+.chat-input{flex:1;padding:10px 14px;border:1.5px solid var(--border);border-radius:var(--r);font-family:'DM Sans',sans-serif;font-size:14px;outline:none;resize:none;min-height:44px;max-height:110px;overflow-y:auto;transition:border-color .14s;}
+.chat-input:focus{border-color:var(--teal);}
+.chat-send{padding:10px 18px;background:var(--teal);color:white;border:none;border-radius:var(--r);font-family:'DM Sans',sans-serif;font-weight:500;font-size:14px;cursor:pointer;transition:background .15s;white-space:nowrap;}
+.chat-send:hover{background:var(--teal-mid);}
+.chat-send:disabled{background:var(--ink-light);cursor:not-allowed;}
+.gen-btn{width:100%;margin-top:14px;padding:14px;background:var(--green);color:white;border:none;border-radius:var(--r);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;cursor:pointer;transition:all .18s;display:none;}
+.gen-btn:hover{background:#145c3d;}
+.gen-btn.show{display:block;}
+.gen-btn:disabled{background:var(--ink-light);cursor:not-allowed;}
+
+/* BRIEF */
+.brief-wrap{max-width:700px;margin:0 auto;padding:40px 2rem;}
+.brief-wrap h2{font-family:'Fraunces',serif;font-size:24px;font-weight:400;margin-bottom:6px;}
+.brief-wrap .sub{font-size:13px;color:var(--ink-mid);margin-bottom:22px;}
+.brief-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:28px;box-shadow:var(--shadow);margin-bottom:18px;}
+.brief-sec{margin-bottom:20px;}
+.brief-sec-label{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);display:block;margin-bottom:6px;}
+.brief-sec textarea{width:100%;padding:11px 13px;border:1.5px solid var(--border);border-radius:var(--r-sm);font-family:'DM Sans',sans-serif;font-size:14px;line-height:1.6;color:var(--ink);resize:vertical;min-height:76px;outline:none;transition:border-color .14s;}
+.brief-sec textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(11,110,110,.06);}
+.brief-actions{display:flex;gap:12px;}
+.brief-save{padding:13px 22px;background:var(--white);color:var(--ink);border:1.5px solid var(--border);border-radius:var(--r);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all .15s;}
+.brief-save:hover{border-color:var(--teal);color:var(--teal);}
+.brief-approve{flex:1;padding:13px;background:var(--green);color:white;border:none;border-radius:var(--r);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:background .15s;}
+.brief-approve:hover{background:#145c3d;}
+.brief-loading{text-align:center;padding:48px 24px;}
+.brief-loading p{font-size:14px;color:var(--ink-mid);margin-top:12px;}
+.spinner{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--teal);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto;}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* REFERRAL */
+.ref-wrap{max-width:560px;margin:0 auto;padding:48px 2rem;}
+.ref-wrap h2{font-family:'Fraunces',serif;font-size:24px;font-weight:400;margin-bottom:6px;}
+.ref-wrap .sub{font-size:14px;color:var(--ink-mid);margin-bottom:24px;}
+.upload-zone{background:var(--white);border:2px dashed var(--border);border-radius:var(--r);padding:52px 32px;text-align:center;cursor:pointer;transition:all .18s;margin-bottom:16px;display:block;width:100%;box-sizing:border-box;}
+.upload-zone:hover,.upload-zone.over{border-color:var(--teal);background:var(--teal-light);}
+.upload-zone input{display:none;}
+.upload-icon{font-size:32px;margin-bottom:10px;}
+.upload-zone h3{font-size:15px;font-weight:600;margin-bottom:4px;}
+.upload-zone p{font-size:13px;color:var(--ink-light);}
+.file-chip{display:none;align-items:center;gap:10px;background:var(--green-light);border:1px solid #9dcfb8;border-radius:var(--r-sm);padding:12px 16px;font-size:13px;color:var(--green);margin-bottom:16px;}
+.file-chip.show{display:flex;}
+
+/* CONFIRM */
+.confirm-wrap{max-width:560px;margin:0 auto;padding:80px 2rem;text-align:center;}
+.confirm-icon{width:72px;height:72px;background:var(--green-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;font-size:30px;}
+.confirm-wrap h2{font-family:'Fraunces',serif;font-size:32px;font-weight:300;margin-bottom:12px;}
+.confirm-wrap>p{font-size:16px;color:var(--ink-mid);line-height:1.7;max-width:420px;margin:0 auto 28px;}
+.confirm-details{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:22px 24px;text-align:left;margin-bottom:28px;}
+.cd-row{display:flex;justify-content:space-between;padding:9px 0;font-size:14px;border-bottom:1px solid var(--bg);}
+.cd-row:last-child{border-bottom:none;}
+.cd-row span:first-child{color:var(--ink-mid);}
+.cd-row span:last-child{font-weight:500;}
+
+/* AUTH */
+.auth-wrap{max-width:380px;margin:0 auto;padding:80px 2rem;}
+.auth-wrap h2{font-family:'Fraunces',serif;font-size:26px;font-weight:400;margin-bottom:6px;}
+.auth-wrap .sub{font-size:14px;color:var(--ink-mid);margin-bottom:24px;}
+
+/* PSYCH DASH */
+.psych-wrap{max-width:900px;margin:0 auto;padding:48px 2rem;}
+.psych-wrap h2{font-family:'Fraunces',serif;font-size:26px;font-weight:400;margin-bottom:4px;}
+.psych-wrap .sub{font-size:14px;color:var(--ink-mid);margin-bottom:28px;}
+.psych-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:6px;}
+.apt-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);margin-bottom:20px;overflow:hidden;box-shadow:var(--shadow);}
+.apt-head{padding:18px 22px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.apt-head h3{font-size:16px;font-weight:600;}
+.apt-head p{font-size:13px;color:var(--ink-mid);margin-top:2px;}
+.apt-body{padding:22px;}
+.apt-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px;}
+.apt-field label{font-size:11px;font-weight:600;color:var(--ink-light);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:3px;}
+.apt-field p{font-size:14px;}
+.brief-view{background:var(--teal-pale);border-radius:var(--r-sm);padding:16px;font-size:13px;line-height:1.8;color:var(--ink-mid);white-space:pre-wrap;max-height:240px;overflow-y:auto;margin-bottom:14px;}
+.dl-btn{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:500;color:var(--teal);padding:8px 14px;border:1px solid var(--sage-dark);border-radius:var(--r-sm);background:var(--teal-light);cursor:pointer;transition:background .15s;text-decoration:none;}
+.dl-btn:hover{background:var(--sage-dark);}
+.empty-state{text-align:center;padding:64px 32px;}
+.empty-state h3{font-size:17px;color:var(--ink-mid);margin-bottom:8px;}
+.empty-state p{font-size:14px;color:var(--ink-light);}
+
+.hidden{display:none!important;}
+@media(max-width:600px){
+  .frow{grid-template-columns:1fr;}
+  .role-cards{grid-template-columns:1fr;}
+  .apt-grid{grid-template-columns:1fr;}
+  .brief-actions{flex-direction:column;}
+  nav{padding:0 1rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="brand" onclick="go('role')">
+    <div class="brand-mark">
+      <svg viewBox="0 0 16 16"><path d="M8 2C5.24 2 3 4.24 3 7c0 1.9 1.02 3.56 2.54 4.48L5 14h6l-.54-2.52C11.98 10.56 13 8.9 13 7c0-2.76-2.24-5-5-5z"/></svg>
+    </div>
+    MindBridge Health
+  </div>
+  <div class="nav-right">
+    <button class="nbtn hidden" id="nav-dash" onclick="go('dashboard')">My Dashboard</button>
+    <button class="nbtn" onclick="go('psych-auth')">Psychiatrist Login</button>
+    <button class="nbtn solid" onclick="go('book')">Book Appointment</button>
+  </div>
+</nav>
+
+<!-- ══ ROLE SELECT ══ -->
+<div class="page active" id="page-role">
+  <div class="role-page">
+    <div class="role-hero">
+      <h1>Welcome to<br><em>MindBridge Health</em></h1>
+      <p>Thoughtful care begins here. Tell us who you are to get started.</p>
+    </div>
+    <div class="role-cards">
+      <div class="role-card patient" onclick="go('home')">
+        <div class="role-icon">🧑‍💼</div>
+        <h2>I'm a Patient</h2>
+        <p>Book an appointment, complete your intake, and confirm your consultation.</p>
+        <div class="arrow">Get started →</div>
+      </div>
+      <div class="role-card psych" onclick="go('psych-auth')">
+        <div class="role-icon">🩺</div>
+        <h2>I'm a Psychiatrist</h2>
+        <p>View confirmed appointments, intake briefs, and referral letters.</p>
+        <div class="arrow" style="color:var(--green)">View dashboard →</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ HOME ══ -->
+<div class="page" id="page-home">
+  <div class="hero">
+    <div class="pill">Psychiatric Intake Platform</div>
+    <h1>Thoughtful care <em>begins here</em></h1>
+    <p>Complete your intake before your appointment. Your psychiatrist will be fully prepared from the first minute.</p>
+    <div class="hero-btns">
+      <button class="btn btn-primary" onclick="go('book')">Book an Appointment</button>
+      <button class="btn btn-outline" onclick="requirePatient()">My Dashboard</button>
+    </div>
+  </div>
+  <div class="steps-wrap">
+    <div class="sec-label">How it works</div>
+    <div class="sec-title">Your path to consultation</div>
+    <div class="steps-grid">
+      <div class="step-card"><div class="step-num">1</div><h3>Request</h3><p>Fill in your details and preferred appointment time.</p></div>
+      <div class="step-card"><div class="step-num">2</div><h3>Intake</h3><p>Complete an AI-guided conversation at your own pace.</p></div>
+      <div class="step-card"><div class="step-num">3</div><h3>Review</h3><p>Your brief is generated automatically. Edit and approve it.</p></div>
+      <div class="step-card"><div class="step-num">4</div><h3>Referral</h3><p>Upload your GP referral letter.</p></div>
+      <div class="step-card"><div class="step-num">5</div><h3>Confirmed</h3><p>Your psychiatrist receives everything before your visit.</p></div>
+    </div>
+    <div class="notice"><strong>Important:</strong> Your appointment is only confirmed after your intake brief is approved and your referral letter is uploaded.</div>
+  </div>
+</div>
+
+<!-- ══ BOOK ══ -->
+<div class="page" id="page-book">
+  <div class="form-wrap">
+    <h2>Book an Appointment</h2>
+    <p class="sub">Your appointment is confirmed after your intake brief is approved and referral letter uploaded.</p>
+    <div class="card">
+      <div id="book-ok" class="alert alert-ok hidden"></div>
+      <div class="frow">
+        <div class="field"><label>Full Name *</label><input id="b-name" type="text" placeholder="Your full name"></div>
+        <div class="field"><label>Email *</label><input id="b-email" type="email" placeholder="you@email.com"></div>
+      </div>
+      <div class="frow">
+        <div class="field"><label>Phone</label><input id="b-phone" type="tel" placeholder="+61 4xx xxx xxx"></div>
+        <div class="field"><label>Preferred Date & Time *</label><input id="b-dt" type="datetime-local"></div>
+      </div>
+      <div class="field">
+        <label>Preferred Psychiatrist</label>
+        <select id="b-psych">
+          <option value="">No preference</option>
+          <option>Dr. Sarah Chen</option>
+          <option>Dr. James Okafor</option>
+          <option>Dr. Priya Mehta</option>
+        </select>
+      </div>
+      <div class="field"><label>Reason for Appointment *</label><textarea id="b-reason" placeholder="Briefly describe what brings you to seek a consultation..."></textarea></div>
+      <button class="fbtn" onclick="submitBook()">Submit Appointment Request</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ DASHBOARD ══ -->
+<div class="page" id="page-dashboard">
+  <div class="dash-wrap">
+    <h2 id="dash-name">Welcome back</h2>
+    <p class="dash-sub">Here's the status of your appointment and your next step.</p>
+    <div class="progress-bar">
+      <div class="prog-step" id="prog-1">Booking</div>
+      <div class="prog-step" id="prog-2">Intake</div>
+      <div class="prog-step" id="prog-3">Brief Review</div>
+      <div class="prog-step" id="prog-4">Referral</div>
+      <div class="prog-step" id="prog-5">Confirmed</div>
+    </div>
+    <div class="status-card">
+      <div class="sc-top">
+        <div class="sc-info">
+          <h3 id="dash-reason">Your Appointment</h3>
+          <p id="dash-detail">—</p>
+        </div>
+        <span class="badge" id="dash-badge">—</span>
+      </div>
+      <div class="next-box" id="dash-next">Loading...</div>
+      <div class="sc-actions" id="dash-actions"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ API KEY SETUP ══ -->
+<div class="page" id="page-apikey">
+  <div class="api-setup">
+    <h2>One-time Setup</h2>
+    <p class="sub">To power the AI intake conversation, you need a free Anthropic API key. This is a one-time step — it's saved in your browser and never shared.</p>
+    <div class="card">
+      <div id="api-err" class="alert alert-err hidden"></div>
+
+      <ol class="api-steps">
+        <li><div class="api-step-num">1</div><span>Go to <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a> and create a free account.</span></li>
+        <li><div class="api-step-num">2</div><span>Click <strong>API Keys</strong> in the left sidebar, then <strong>Create Key</strong>.</span></li>
+        <li><div class="api-step-num">3</div><span>Copy the key (starts with <code>sk-ant-</code>) and paste it below.</span></li>
+      </ol>
+
+      <div class="field" style="margin-top:16px;">
+        <label>Anthropic API Key</label>
+        <input id="api-key-input" type="password" placeholder="sk-ant-api03-...">
+      </div>
+      <div class="alert alert-info" style="margin-bottom:16px;font-size:13px;">
+        <strong>Cost:</strong> ~$0.01–0.03 AUD per full intake conversation. Your key is stored only in your browser.
+      </div>
+      <button class="fbtn" onclick="saveApiKey()">Save & Start Intake →</button>
+      <button onclick="skipApiKey()" style="width:100%;margin-top:10px;padding:12px;background:transparent;border:1.5px solid var(--border);border-radius:var(--r);font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink-mid);cursor:pointer;" onmouseover="this.style.borderColor='var(--teal)';this.style.color='var(--teal)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--ink-mid)'">Skip for now — Upload Referral Only</button>
+      <p style="text-align:center;font-size:12px;color:var(--ink-light);margin-top:10px;">You can complete the AI intake later from your dashboard.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ INTAKE ══ -->
+<div class="page" id="page-intake">
+  <div class="intake-wrap">
+    <h2>AI-Guided Intake Conversation</h2>
+    <p class="sub">This private conversation helps gather information for your psychiatrist. Take your time — there are no right or wrong answers.</p>
+    <div class="consent-box">
+      <strong>Consent:</strong> By continuing, you consent to sharing your intake responses, approved brief, and referral letter with the psychiatrist for the purpose of preparing for your consultation. This tool does not provide diagnosis, treatment, or emergency support.
+    </div>
+    <div class="safety-box">
+      <strong>Safety:</strong> If you are in immediate danger, call <strong>000</strong> (Australia) or Lifeline <strong>13 11 14</strong> — do not wait.
+    </div>
+    <div class="chat-card">
+      <div class="chat-header">
+        <div style="display:flex;align-items:center;gap:10px;width:100%;">
+          <div class="chat-header-dot"></div>
+          <div>
+            <h3>Intake Assistant</h3>
+            <p>AI-powered • Confidential</p>
+          </div>
+        </div>
+      </div>
+      <div class="chat-window" id="chat-window"></div>
+      <div class="chat-footer">
+        <textarea class="chat-input" id="chat-input" placeholder="Type your response..." rows="1" onkeydown="handleKey(event)"></textarea>
+        <button class="chat-send" id="chat-send" onclick="sendMsg()" disabled>Send</button>
+      </div>
+    </div>
+    <button class="gen-btn" id="gen-btn" onclick="generateBrief()">Generate My Intake Brief →</button>
+  </div>
+</div>
+
+<!-- ══ BRIEF ══ -->
+<div class="page" id="page-brief">
+  <div class="brief-wrap">
+    <h2>Review Your Intake Brief</h2>
+    <p class="sub">Your brief has been generated from your conversation. Review each section, make any edits, then approve it to share with your psychiatrist.</p>
+    <div id="brief-approved-msg" class="alert alert-ok hidden">✓ Your brief has been approved and shared with your psychiatrist.</div>
+    <div id="brief-loading" class="brief-loading">
+      <div class="spinner"></div>
+      <p>Generating your brief from the conversation...</p>
+    </div>
+    <div id="brief-editor-wrap" class="hidden">
+      <div class="brief-card" id="brief-editor"></div>
+      <div class="brief-actions" id="brief-btns">
+        <button class="brief-save" onclick="saveBrief()">Save Changes</button>
+        <button class="brief-approve" id="approve-btn" onclick="approveBrief()">Approve & Share with Psychiatrist ✓</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ REFERRAL ══ -->
+<div class="page" id="page-referral">
+  <div class="ref-wrap">
+    <h2>Upload Referral Letter</h2>
+    <p class="sub">Upload your referral letter from your GP or referring doctor.</p>
+    <div id="ref-warn" class="alert alert-warn hidden">Please approve your intake brief before uploading your referral.</div>
+    <div class="alert alert-info" id="ref-info" style="margin-bottom:16px;font-size:13px;">You can upload your referral now and complete the AI intake later — your appointment will be confirmed once both are done.</div>
+    <label class="upload-zone" id="upload-zone" for="ref-file">
+      <div class="upload-icon">📎</div>
+      <h3>Click to select or drag & drop</h3>
+      <p>PDF, JPG, PNG, DOCX — max 10MB</p>
+      <input type="file" id="ref-file" accept=".pdf,.jpg,.jpeg,.png,.docx" onchange="fileSelected(event)">
+    </label>
+    <div class="file-chip" id="file-chip"><span>📄</span><span id="chip-name">file.pdf</span></div>
+    <button class="fbtn green" onclick="submitReferral()">Submit Referral & Confirm Appointment</button>
+  </div>
+</div>
+
+<!-- ══ CONFIRMATION ══ -->
+<div class="page" id="page-confirm">
+  <div class="confirm-wrap">
+    <div class="confirm-icon">✓</div>
+    <h2>Appointment Confirmed</h2>
+    <p>Your approved intake brief and referral letter have been securely shared with your psychiatrist before your consultation.</p>
+    <div class="confirm-details" id="confirm-details"></div>
+    <button class="btn btn-primary" onclick="go('dashboard')">Back to My Dashboard</button>
+  </div>
+</div>
+
+<!-- ══ PSYCH AUTH ══ -->
+<div class="page" id="page-psych-auth">
+  <div class="auth-wrap">
+    <h2>Psychiatrist Login</h2>
+    <p class="sub">Access confirmed appointments and patient intake briefs.</p>
+    <div class="card">
+      <div id="auth-err" class="alert alert-err hidden">Invalid credentials.</div>
+      <div class="field"><label>Email</label><input id="auth-email" type="email" value="doctor@mindbridge.health"></div>
+      <div class="field"><label>Password</label><input id="auth-pw" type="password" value="MindBridge2024"></div>
+      <button class="fbtn" onclick="psychLogin()">Log In</button>
+      <p style="text-align:center;margin-top:14px;font-size:12px;color:var(--ink-light)">Demo: doctor@mindbridge.health / MindBridge2024</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PSYCH DASH ══ -->
+<div class="page" id="page-psych-dash">
+  <div class="psych-wrap">
+    <div class="psych-top">
+      <div>
+        <h2>Psychiatrist Dashboard</h2>
+        <p class="sub">Confirmed appointments with approved intake briefs and referral letters.</p>
+      </div>
+      <button class="nbtn" onclick="psychLogout()">Log Out</button>
+    </div>
+    <div id="psych-list"></div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════
+// CONSTANTS
+// ══════════════════════════════════════════════
+const PSYCH_EMAIL = 'doctor@mindbridge.health';
+const PSYCH_PW    = 'MindBridge2024';
+
+const SYSTEM_PROMPT = `You are an AI Psychiatric Intake Assistant.
+Your role is to conduct a pre-consultation intake conversation and generate a structured clinical brief for a psychiatrist.
+You are NOT a doctor, therapist, or crisis responder.
+You must NOT diagnose, recommend medication, or provide treatment advice.
+
+PRIMARY GOALS
+1. Understand the patient's main concerns.
+2. Ask adaptive follow-up questions.
+3. Collect relevant clinical history.
+4. Identify missing or unclear information.
+5. Generate a concise, structured intake brief.
+
+HOW TO BEGIN
+Start with exactly:
+"Hi, I'm here to help gather some information before your appointment with the psychiatrist. Everything you share will be summarised for them to review. There are no right or wrong answers — just share what feels relevant to you.
+
+To begin: what would you most like the psychiatrist to understand about what has been happening for you?"
+
+CONVERSATION RULES
+- Ask ONE question at a time.
+- Keep questions clear, brief, and natural.
+- Adapt based on patient responses.
+- Do NOT repeat questions already answered.
+- If a response is vague, ask ONE clarification only.
+- Acknowledge distress briefly and compassionately, then continue.
+- Do not overwhelm the patient.
+- Do not provide reassurance that minimises symptoms.
+- Respect if the patient declines to answer — redirect without comment.
+Tone: calm, respectful, human.
+
+INFORMATION TO COLLECT
+ESSENTIAL: Presenting concern, Timeline and duration, Functional impact, Safety
+RECOMMENDED: Mood and anxiety symptoms, Sleep/appetite/energy, Medications, Social supports, Patient goals
+SUPPLEMENTARY: Severity/frequency/triggers, Past psychiatric and medical history, Substance use, Concentration
+
+SAFETY PROTOCOL — OVERRIDES ALL OTHER RULES
+Activate if patient mentions: suicidal thoughts, self-harm, harming others, feeling unsafe, abuse or violence, hallucinations, paranoia, severe confusion, inability to care for themselves.
+STEP 1: "I'm really sorry you're going through this."
+STEP 2: "Are you in immediate danger right now?"
+STEP 3a (YES or UNCLEAR): "I'm not able to provide emergency support, but your safety is the priority. Please contact emergency services now, go to the nearest emergency department, or reach out to a trusted person who can stay with you. If you're in Australia: call 000 or Lifeline on 13 11 14." Then end intake.
+STEP 3b (NO — safe but disclosed risk): Acknowledge, flag for psychiatrist, ask ONE follow-up, resume with grounding question. Flag in brief.
+Never: provide counselling, conduct risk assessment, promise they'll be okay, ignore disclosure.
+
+WHEN TO STOP
+After covering presenting concern, timeline, functional impact, and safety, ask:
+"I think I have a good understanding. Would you like me to generate the intake summary for your psychiatrist?"
+If they agree, respond with exactly: [READY_TO_GENERATE]
+
+STRICT LIMITS
+NEVER diagnose, use diagnostic labels, recommend medications, provide therapy, fill gaps with assumptions, ask multiple questions at once.`;
+
+const BRIEF_PROMPT = `Based on our intake conversation, generate a structured clinical brief. 
+Respond with ONLY a valid JSON object — no markdown, no explanation, just the JSON.
+Use "patient reports..." language throughout. Do NOT diagnose. Do NOT use diagnostic labels. Do NOT recommend treatment.
+Mark anything not discussed as "Not assessed" or "Not reported".
+If contradictory information was given, document both versions.
+
+JSON format:
+{
+  "narrative": "3-5 sentence neutral summary in patient's own terms",
+  "concerns": "bullet list of presenting concerns",
+  "timeline": "onset, course, recent changes; note contradictions",
+  "symptoms": "grouped: Mood / Anxiety / Sleep / Appetite & Energy / Cognition / Other",
+  "functional": "impact on work, relationships, daily functioning, self-care",
+  "history": "past psychiatric care, patient-stated diagnoses, current/past medications, medical conditions",
+  "substance": "alcohol, cannabis, other substances; any reported link to symptoms",
+  "social": "living situation, support network",
+  "risk": "safety concerns — most urgent first; if none: Risk not assessed during intake",
+  "missing": "gaps, declined questions, unresolved contradictions",
+  "goals": "what the patient wants from the appointment",
+  "explore": "neutral information gaps only — NO diagnostic language, NO treatment suggestions"
+}`;
+
+const BRIEF_FIELDS = [
+  {k:'narrative', l:'Patient Narrative'},
+  {k:'concerns',  l:'Presenting Concerns'},
+  {k:'timeline',  l:'Timeline'},
+  {k:'symptoms',  l:'Key Symptoms'},
+  {k:'functional',l:'Functional Impact'},
+  {k:'history',   l:'Relevant History'},
+  {k:'substance', l:'Substance Use'},
+  {k:'social',    l:'Social Context'},
+  {k:'risk',      l:'Risk Indicators'},
+  {k:'missing',   l:'Missing Information'},
+  {k:'goals',     l:'Patient Goals'},
+  {k:'explore',   l:'Areas for Psychiatrist to Explore'},
+];
+
+// ══════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════
+let S = {
+  patient: null,
+  appointment: null,
+  psychIn: false,
+  msgs: [],          // [{role:'ai'|'user', text}]
+  msgCount: 0,
+  readyToGenerate: false,
+};
+
+function save(){ localStorage.setItem('mb_s', JSON.stringify(S)); }
+function load(){ const d=localStorage.getItem('mb_s'); if(d) try{S=JSON.parse(d);}catch(e){} }
+function getApiKey(){ return localStorage.getItem('mb_apikey')||''; }
+function setApiKeyStore(k){ localStorage.setItem('mb_apikey',k); }
+function getApts(){ return JSON.parse(localStorage.getItem('mb_apts')||'[]'); }
+function setApts(a){ localStorage.setItem('mb_apts',JSON.stringify(a)); }
+function curApt(){ return getApts().find(a=>a.id===S.appointment)||null; }
+function updApt(id,p){ const a=getApts(),i=a.findIndex(x=>x.id===id); if(i>-1){Object.assign(a[i],p);setApts(a);} }
+
+// ══════════════════════════════════════════════
+// ROUTING
+// ══════════════════════════════════════════════
+function go(name){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+  window.scrollTo(0,0);
+  if(name==='dashboard') renderDash();
+  if(name==='psych-dash') renderPsychDash();
+  if(name==='brief') renderBrief();
+  if(name==='intake') initIntake();
+}
+
+function requirePatient(){
+  if(!S.appointment){alert('Please book an appointment first.');go('book');return;}
+  go('dashboard');
+}
+
+// ══════════════════════════════════════════════
+// BOOKING
+// ══════════════════════════════════════════════
+function submitBook(){
+  const name=document.getElementById('b-name').value.trim();
+  const email=document.getElementById('b-email').value.trim();
+  const phone=document.getElementById('b-phone').value.trim();
+  const dt=document.getElementById('b-dt').value;
+  const psych=document.getElementById('b-psych').value;
+  const reason=document.getElementById('b-reason').value.trim();
+  if(!name||!email||!dt||!reason){alert('Please fill in all required fields.');return;}
+
+  const apt={
+    id:'apt_'+Date.now(),
+    patientName:name, patientEmail:email, patientPhone:phone,
+    datetime:dt, psychiatrist:psych||'No preference', reason,
+    status:'Pending Intake', briefApproved:false,
+    brief:{}, referralFile:null, referralName:null,
+    createdAt:new Date().toISOString(),
+  };
+  const apts=getApts(); apts.push(apt); setApts(apts);
+  S.patient={name,email,phone};
+  S.appointment=apt.id;
+  S.msgs=[]; S.msgCount=0; S.readyToGenerate=false;
+  save();
+
+  document.getElementById('nav-dash').classList.remove('hidden');
+  const ok=document.getElementById('book-ok');
+  ok.textContent='Your appointment request has been received. Please complete your intake brief and upload your referral letter to confirm your appointment.';
+  ok.classList.remove('hidden');
+  setTimeout(()=>go('dashboard'),2200);
+}
+
+// ══════════════════════════════════════════════
+// DASHBOARD
+// ══════════════════════════════════════════════
+function renderDash(){
+  const apt=curApt();
+  if(!apt){
+    document.getElementById('dash-next').innerHTML='<strong>No appointment found.</strong> Please book first.';
+    document.getElementById('dash-actions').innerHTML='<button class="act-btn primary" onclick="go(\'book\')">Book Now</button>';
+    return;
+  }
+  if(S.patient) document.getElementById('dash-name').textContent='Welcome, '+S.patient.name;
+  const dt=apt.datetime?new Date(apt.datetime).toLocaleString('en-AU',{weekday:'short',year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'}):'TBC';
+  document.getElementById('dash-reason').textContent=apt.reason.substring(0,55)+(apt.reason.length>55?'…':'');
+  document.getElementById('dash-detail').textContent=(apt.psychiatrist!=='No preference'?apt.psychiatrist+' — ':'')+dt;
+
+  const badge=document.getElementById('dash-badge');
+  badge.textContent=apt.status; badge.className='badge';
+  if(apt.status==='Confirmed') badge.classList.add('badge-confirmed');
+  else if(apt.status==='Pending Brief Approval') badge.classList.add('badge-review');
+  else badge.classList.add('badge-pending');
+
+  const si=['Pending Intake','Pending Brief Approval','Pending Referral','Confirmed'].indexOf(apt.status);
+  ['prog-1','prog-2','prog-3','prog-4','prog-5'].forEach((id,i)=>{
+    const el=document.getElementById(id); el.className='prog-step';
+    if(i<si+1) el.classList.add('done');
+    if(i===si+1) el.classList.add('active');
+  });
+
+  const next=document.getElementById('dash-next');
+  const acts=document.getElementById('dash-actions');
+  if(apt.status==='Pending Intake'){
+    next.innerHTML='<strong>Next:</strong> Complete your AI-guided intake conversation.';
+    acts.innerHTML='<button class="act-btn primary" onclick="startIntakeFlow()">Start Intake Conversation →</button>';
+  } else if(apt.status==='Pending Brief Approval'){
+    next.innerHTML='<strong>Next:</strong> Review and approve your intake brief.';
+    acts.innerHTML='<button class="act-btn primary" onclick="go(\'brief\')">Review My Brief →</button><button class="act-btn" onclick="startIntakeFlow()">Return to Intake</button>';
+  } else if(apt.status==='Pending Referral'){
+    next.innerHTML='<strong>Next:</strong> Upload your referral letter to confirm your appointment.';
+    acts.innerHTML='<button class="act-btn green" onclick="go(\'referral\')">Upload Referral →</button><button class="act-btn" onclick="go(\'brief\')">View My Brief</button>';
+  } else if(apt.status==='Confirmed'){
+    next.innerHTML='<strong>Your appointment is confirmed.</strong> Your psychiatrist has your brief and referral letter.';
+    acts.innerHTML='<button class="act-btn" onclick="go(\'brief\')">View My Brief</button>';
+  }
+}
+
+function skipApiKey(){
+  go('referral');
+}
+
+function startIntakeFlow(){
+  if(!getApiKey()){ go('apikey'); return; }
+  go('intake');
+}
+
+function resetApiKey(){
+  localStorage.removeItem('mb_apikey');
+  S.msgs=[]; S.msgCount=0; S.readyToGenerate=false;
+  save();
+  go('apikey');
+}
+
+// ══════════════════════════════════════════════
+// API KEY
+// ══════════════════════════════════════════════
+function saveApiKey(){
+  const k=document.getElementById('api-key-input').value.trim();
+  if(!k){ alert('Please enter your API key.'); return; }
+  if(k.length < 10){
+    document.getElementById('api-err').textContent='That doesn\'t look like an Anthropic API key. It should start with sk-ant-';
+    document.getElementById('api-err').classList.remove('hidden');
+    return;
+  }
+  setApiKeyStore(k);
+  go('intake');
+}
+
+// ══════════════════════════════════════════════
+// INTAKE CHAT
+// ══════════════════════════════════════════════
+function initIntake(){
+  const win=document.getElementById('chat-window');
+  // Restore previous messages if any
+  if(S.msgs && S.msgs.length>0){
+    win.innerHTML='';
+    S.msgs.forEach(m=>m.role==='ai'?addAI(m.text):addUser(m.text));
+    document.getElementById('chat-send').disabled=false;
+    if(S.readyToGenerate) document.getElementById('gen-btn').classList.add('show');
+    return;
+  }
+  // Start fresh
+  win.innerHTML='';
+  document.getElementById('chat-send').disabled=true;
+  document.getElementById('gen-btn').classList.remove('show');
+  beginIntake();
+}
+
+async function beginIntake(){
+  addTyping();
+  try{
+    const res=await callClaude([{role:'user',content:'Please begin the intake conversation.'}]);
+    removeTyping();
+    const text=res.content[0].text;
+    addAI(text);
+    S.msgs=[{role:'ai',text}];
+    S.msgCount=0;
+    save();
+    document.getElementById('chat-send').disabled=false;
+  }catch(e){
+    removeTyping();
+    addAI('I\'m having trouble connecting. Please check your API key in Settings and try again.');
+    console.error(e);
+  }
+}
+
+async function sendMsg(){
+  const inp=document.getElementById('chat-input');
+  const text=inp.value.trim();
+  if(!text) return;
+  inp.value='';
+  addUser(text);
+  S.msgs.push({role:'user',text});
+  S.msgCount++;
+  document.getElementById('chat-send').disabled=true;
+  addTyping();
+
+  const apiMsgs=S.msgs.map(m=>({role:m.role==='ai'?'assistant':'user',content:m.text}));
+
+  try{
+    const res=await callClaude(apiMsgs);
+    removeTyping();
+    const reply=res.content[0].text;
+
+    if(reply.includes('[READY_TO_GENERATE]')){
+      const clean=reply.replace('[READY_TO_GENERATE]','').trim();
+      if(clean){ addAI(clean); S.msgs.push({role:'ai',text:clean}); }
+      S.readyToGenerate=true;
+      document.getElementById('gen-btn').classList.add('show');
+    } else {
+      addAI(reply);
+      S.msgs.push({role:'ai',text:reply});
+      if(S.msgCount>=6) document.getElementById('gen-btn').classList.add('show');
+    }
+    save();
+  }catch(e){
+    removeTyping();
+    addAI('Error: ' + e.message + ' — Please check your API key.');
+    console.error(e);
+  }
+  document.getElementById('chat-send').disabled=false;
+}
+
+function handleKey(e){
+  if(e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); sendMsg(); }
+}
+
+function addAI(text, isTyping=false){
+  const cw=document.getElementById('chat-window');
+  const d=document.createElement('div');
+  d.className='msg ai'+(isTyping?' typing-msg':'');
+  if(isTyping) d.id='typing-ind';
+  d.innerHTML=`<div class="msg-av">AI</div><div class="msg-bub${isTyping?' typing-bub':''}">${
+    isTyping
+      ?'<div class="dots"><span></span><span></span><span></span></div>'
+      :esc(text).replace(/\n/g,'<br>')
+  }</div>`;
+  cw.appendChild(d);
+  cw.scrollTop=cw.scrollHeight;
+}
+
+function addUser(text){
+  const cw=document.getElementById('chat-window');
+  const d=document.createElement('div');
+  d.className='msg user';
+  d.innerHTML=`<div class="msg-av">You</div><div class="msg-bub">${esc(text).replace(/\n/g,'<br>')}</div>`;
+  cw.appendChild(d);
+  cw.scrollTop=cw.scrollHeight;
+}
+
+function addTyping(){ addAI('',true); }
+function removeTyping(){ const el=document.getElementById('typing-ind'); if(el) el.remove(); }
+
+// ══════════════════════════════════════════════
+// BRIEF GENERATION
+// ══════════════════════════════════════════════
+async function generateBrief(){
+  const btn=document.getElementById('gen-btn');
+  btn.disabled=true;
+  btn.textContent='Generating your brief…';
+
+  // Navigate to brief page immediately — show spinner
+  go('brief');
+
+  // Build messages for brief generation
+  const apiMsgs=S.msgs.map(m=>({role:m.role==='ai'?'assistant':'user',content:m.text}));
+  apiMsgs.push({role:'user',content:BRIEF_PROMPT});
+
+  try{
+    const res=await callClaude(apiMsgs, 2000);
+    let raw=res.content[0].text.trim();
+    // Strip markdown fences
+    raw=raw.replace(/^```json\s*/i,'').replace(/^```\s*/i,'').replace(/```\s*$/i,'').trim();
+
+    let brief;
+    try{ brief=JSON.parse(raw); }
+    catch(e){
+      const m=raw.match(/\{[\s\S]*\}/);
+      if(m) brief=JSON.parse(m[0]);
+      else throw new Error('Could not parse brief JSON');
+    }
+
+    // Save brief to appointment
+    updApt(S.appointment,{brief,status:'Pending Brief Approval'});
+
+    // Render the brief editor
+    showBriefEditor(brief);
+  }catch(e){
+    document.getElementById('brief-loading').innerHTML=`
+      <div class="alert alert-err">Failed to generate brief. Please go back to intake and try again.<br><small>${e.message}</small></div>
+      <button class="fbtn" style="max-width:200px;margin:16px auto 0" onclick="go('intake')">Back to Intake</button>`;
+    console.error(e);
+  }
+}
+
+// ══════════════════════════════════════════════
+// BRIEF PAGE
+// ══════════════════════════════════════════════
+function renderBrief(){
+  const apt=curApt();
+  if(!apt) return;
+
+  document.getElementById('brief-loading').style.display='block';
+  document.getElementById('brief-editor-wrap').classList.add('hidden');
+  document.getElementById('brief-approved-msg').classList.add('hidden');
+
+  if(apt.brief && Object.keys(apt.brief).length>0){
+    showBriefEditor(apt.brief);
+    if(apt.briefApproved){
+      document.getElementById('brief-approved-msg').classList.remove('hidden');
+      document.getElementById('approve-btn').textContent='Brief Approved ✓';
+    }
+  }
+  // else: loading spinner stays — brief is being generated
+}
+
+function showBriefEditor(brief){
+  document.getElementById('brief-loading').style.display='none';
+  const wrap=document.getElementById('brief-editor-wrap');
+  const editor=document.getElementById('brief-editor');
+  wrap.classList.remove('hidden');
+
+  editor.innerHTML=BRIEF_FIELDS.map(f=>`
+    <div class="brief-sec">
+      <span class="brief-sec-label">${f.l}</span>
+      <textarea id="bf-${f.k}" rows="4">${esc(brief[f.k]||'Not assessed')}</textarea>
+    </div>
+  `).join('');
+}
+
+function saveBrief(){
+  const apt=curApt(); if(!apt) return;
+  const updated={};
+  BRIEF_FIELDS.forEach(f=>{ const el=document.getElementById('bf-'+f.k); if(el) updated[f.k]=el.value; });
+  updApt(apt.id,{brief:updated});
+  const btn=document.querySelector('.brief-save');
+  btn.textContent='Saved ✓';
+  setTimeout(()=>btn.textContent='Save Changes',2000);
+}
+
+function approveBrief(){
+  saveBrief();
+  const apt=curApt(); if(!apt) return;
+  // If referral already uploaded, go straight to confirmed
+  if(apt.referralFile){
+    updApt(apt.id,{briefApproved:true,status:'Confirmed'});
+    document.getElementById('brief-approved-msg').classList.remove('hidden');
+    document.getElementById('approve-btn').textContent='Brief Approved ✓';
+    const dt=apt.datetime?new Date(apt.datetime).toLocaleString('en-AU',{weekday:'long',year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'}):'TBC';
+    document.getElementById('confirm-details').innerHTML=`
+      <div class="cd-row"><span>Patient</span><span>${esc(apt.patientName)}</span></div>
+      <div class="cd-row"><span>Appointment</span><span>${dt}</span></div>
+      <div class="cd-row"><span>Psychiatrist</span><span>${esc(apt.psychiatrist)}</span></div>
+      <div class="cd-row"><span>Brief</span><span style="color:var(--green)">Approved ✓</span></div>
+      <div class="cd-row"><span>Referral</span><span style="color:var(--green)">Uploaded ✓</span></div>
+      <div class="cd-row"><span>Status</span><span style="color:var(--green);font-weight:600">Confirmed</span></div>
+    `;
+    setTimeout(()=>go('confirm'),1400);
+  } else {
+    updApt(apt.id,{briefApproved:true,status:'Pending Referral'});
+    document.getElementById('brief-approved-msg').classList.remove('hidden');
+    document.getElementById('approve-btn').textContent='Brief Approved ✓';
+    setTimeout(()=>go('referral'),1400);
+  }
+}
+
+// ══════════════════════════════════════════════
+// REFERRAL
+// ══════════════════════════════════════════════
+let _fd=null, _fn=null;
+
+function fileSelected(e){
+  const f=e.target.files[0]; if(!f) return;
+  if(f.size>10*1024*1024){alert('File too large. Max 10MB.');return;}
+  _fn=f.name;
+  const r=new FileReader();
+  r.onload=ev=>{ _fd=ev.target.result; };
+  r.readAsDataURL(f);
+  document.getElementById('chip-name').textContent=f.name;
+  document.getElementById('file-chip').classList.add('show');
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  const z=document.getElementById('upload-zone');
+  if(!z) return;
+  z.addEventListener('dragover',e=>{e.preventDefault();z.classList.add('over');});
+  z.addEventListener('dragleave',()=>z.classList.remove('over'));
+  z.addEventListener('drop',e=>{
+    e.preventDefault();z.classList.remove('over');
+    const f=e.dataTransfer.files[0];
+    if(f){ document.getElementById('ref-file').files=e.dataTransfer.files; fileSelected({target:{files:[f]}}); }
+  });
+});
+
+function submitReferral(){
+  const apt=curApt(); if(!apt) return;
+  if(!_fd){ alert('Please select a referral file first.'); return; }
+  // If brief not yet approved, save referral and keep status as Pending Intake
+  if(!apt.briefApproved){
+    updApt(apt.id,{referralFile:_fd,referralName:_fn});
+    document.getElementById('ref-warn').classList.add('hidden');
+    // Show success and redirect to dashboard
+    const chip=document.getElementById('file-chip');
+    chip.classList.add('show');
+    // Show a success message then go to dashboard
+    const btn=document.querySelector('.fbtn.green');
+    if(btn){btn.textContent='Referral saved! Complete intake to confirm.';btn.style.background='var(--teal)';}
+    setTimeout(()=>go('dashboard'),2000);
+    return;
+  }
+  updApt(apt.id,{referralFile:_fd,referralName:_fn,status:'Confirmed'});
+  const dt=apt.datetime?new Date(apt.datetime).toLocaleString('en-AU',{weekday:'long',year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'}):'TBC';
+  document.getElementById('confirm-details').innerHTML=`
+    <div class="cd-row"><span>Patient</span><span>${esc(apt.patientName)}</span></div>
+    <div class="cd-row"><span>Appointment</span><span>${dt}</span></div>
+    <div class="cd-row"><span>Psychiatrist</span><span>${esc(apt.psychiatrist)}</span></div>
+    <div class="cd-row"><span>Brief</span><span style="color:var(--green)">Approved ✓</span></div>
+    <div class="cd-row"><span>Referral</span><span style="color:var(--green)">Uploaded ✓</span></div>
+    <div class="cd-row"><span>Status</span><span style="color:var(--green);font-weight:600">Confirmed</span></div>
+  `;
+  go('confirm');
+}
+
+// ══════════════════════════════════════════════
+// PSYCH DASHBOARD
+// ══════════════════════════════════════════════
+function psychLogin(){
+  const e=document.getElementById('auth-email').value;
+  const p=document.getElementById('auth-pw').value;
+  if(e===PSYCH_EMAIL&&p===PSYCH_PW){ S.psychIn=true; save(); go('psych-dash'); }
+  else document.getElementById('auth-err').classList.remove('hidden');
+}
+
+function psychLogout(){ S.psychIn=false; save(); go('role'); }
+
+function renderPsychDash(){
+  if(!S.psychIn){ go('psych-auth'); return; }
+  const apts=getApts().filter(a=>a.status==='Confirmed');
+  const el=document.getElementById('psych-list');
+  if(!apts.length){
+    el.innerHTML='<div class="empty-state"><h3>No confirmed appointments yet</h3><p>Confirmed appointments will appear here once patients complete their intake and upload their referral.</p></div>';
+    return;
+  }
+  el.innerHTML=apts.map(apt=>{
+    const dt=apt.datetime?new Date(apt.datetime).toLocaleString('en-AU',{weekday:'short',year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'}):'TBC';
+    const b=apt.brief||{};
+    const briefText=BRIEF_FIELDS.map(f=>`${f.l.toUpperCase()}\n${b[f.k]||'Not assessed'}`).join('\n\n');
+    return `<div class="apt-card">
+      <div class="apt-head">
+        <div><h3>${esc(apt.patientName)}</h3><p>${esc(apt.reason)}</p></div>
+        <span class="badge badge-confirmed">Confirmed</span>
+      </div>
+      <div class="apt-body">
+        <div class="apt-grid">
+          <div class="apt-field"><label>Date & Time</label><p>${dt}</p></div>
+          <div class="apt-field"><label>Psychiatrist</label><p>${esc(apt.psychiatrist)}</p></div>
+          <div class="apt-field"><label>Email</label><p>${esc(apt.patientEmail)}</p></div>
+          <div class="apt-field"><label>Phone</label><p>${esc(apt.patientPhone||'Not provided')}</p></div>
+        </div>
+        <div class="apt-field" style="margin-bottom:14px">
+          <label>Approved Intake Brief</label>
+          <div class="brief-view">${esc(briefText)}</div>
+        </div>
+        ${apt.referralFile?`<div class="apt-field"><label>Referral Letter</label><br>
+          <a class="dl-btn" onclick="dlRef('${apt.id}')">📄 ${esc(apt.referralName||'referral')} — Download</a>
+        </div>`:''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function dlRef(id){
+  const apt=getApts().find(a=>a.id===id);
+  if(!apt||!apt.referralFile) return;
+  const a=document.createElement('a');
+  a.href=apt.referralFile; a.download=apt.referralName||'referral_letter'; a.click();
+}
+
+// ══════════════════════════════════════════════
+// CLAUDE API
+// ══════════════════════════════════════════════
+async function callClaude(messages, maxTokens=1000){
+  const key=getApiKey();
+  if(!key) throw new Error('No API key set — please enter your key');
+  const res=await fetch('https://api.anthropic.com/v1/messages',{
+    method:'POST',
+    headers:{
+      'Content-Type':'application/json',
+      'x-api-key':key,
+      'anthropic-version':'2023-06-01',
+      'anthropic-dangerous-direct-browser-access':'true',
+    },
+    body:JSON.stringify({
+      model:'claude-sonnet-4-20250514',
+      max_tokens:maxTokens,
+      system:SYSTEM_PROMPT,
+      messages,
+    })
+  });
+  if(!res.ok){
+    const err=await res.json();
+    throw new Error(err.error?.message||'Anthropic API error '+res.status);
+  }
+  return res.json();
+}
+
+// ══════════════════════════════════════════════
+// UTILS
+// ══════════════════════════════════════════════
+function esc(s){
+  if(!s) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ══════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════
+load();
+localStorage.removeItem("mb_apikey"); // one-time reset — remove after re-entering key
+if(S.appointment) document.getElementById('nav-dash').classList.remove('hidden');
+</script>
+</body>
+</html>
